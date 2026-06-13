@@ -12,13 +12,13 @@ Then add the alias to your shell:
 
 ```bash
 # bash
-echo 'alias skillhelp="$HOME/.skillhelp/skillhelp.sh"' >> ~/.bashrc && source ~/.bashrc
+echo 'alias skh="$HOME/.skillhelp/skillhelp.sh"' >> ~/.bashrc && source ~/.bashrc
 
 # zsh
-echo 'alias skillhelp="$HOME/.skillhelp/skillhelp.sh"' >> ~/.zshrc && source ~/.zshrc
+echo 'alias skh="$HOME/.skillhelp/skillhelp.sh"' >> ~/.zshrc && source ~/.zshrc
 
 # fish
-echo 'alias skillhelp "$HOME/.skillhelp/skillhelp.sh"' >> ~/.config/fish/config.fish && source ~/.config/fish/config.fish
+echo 'alias skh "$HOME/.skillhelp/skillhelp.sh"' >> ~/.config/fish/config.fish && source ~/.config/fish/config.fish
 ```
 
 Set your API key (choose one):
@@ -49,17 +49,17 @@ Get key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
 curl -fsSL https://raw.githubusercontent.com/gndps/skillhelp/main/uninstall.sh | bash
 ```
 
-Then remove the `alias skillhelp=...` line from your shell config.
+Then remove the `alias skh=...` line from your shell config.
 
 ## Usage
 
 Run from any directory inside a project:
 
 ```bash
-skillhelp            # One-liner descriptions (default)
-skillhelp list       # Short descriptions (1-2 sentences)
-skillhelp --long     # Detailed descriptions (3-5 sentences)
-skillhelp --help     # Show help
+skh                  # One-liner descriptions (default)
+skh list             # Short descriptions (1-2 sentences)
+skh --long           # Detailed descriptions (3-5 sentences)
+skh --help           # Show help
 ```
 
 All command aliases: `list`/`l`/`-l`/`--list`, `long`/`--long`, `help`/`h`/`-h`/`--help`

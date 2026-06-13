@@ -13,8 +13,11 @@ if [[ -f "$SCRIPT_DIR/.env" ]]; then
     while IFS='=' read -r key value; do
         # Skip comments and empty lines
         [[ "$key" =~ ^#.*$ || -z "$key" ]] && continue
-        # Only set if not already set in environment
-        if [[ -z "${!key}" ]]; then
+        # Strip surrounding quotes from value
+        value="${value%\"}"
+        value="${value#\"}"
+        # Only set if not already exported in environment
+        if ! declare -p "$key" &>/dev/null; then
             export "$key=$value"
         fi
     done < "$SCRIPT_DIR/.env"
@@ -35,13 +38,13 @@ usage() {
     echo -e "  ${B}${C}skillhelp${RST} — AI-powered skill browser for coding assistants"
     echo ""
     echo -e "  ${B}USAGE${RST}"
-    echo -e "    skillhelp ${D}[command]${RST}"
+    echo -e "    skh ${D}[command]${RST}"
     echo ""
     echo -e "  ${B}COMMANDS${RST}"
-    echo -e "    ${G}${B}(default)${RST}                  List skills with one-liner descriptions"
-    echo -e "    ${G}help${RST}, ${G}h${RST}, ${G}-h${RST}, ${G}--help${RST}       Show this help message"
-    echo -e "    ${G}list${RST}, ${G}l${RST}, ${G}-l${RST}, ${G}--list${RST}       List skills with short descriptions"
-    echo -e "    ${G}long${RST}, ${G}--long${RST}              List skills with detailed descriptions"
+    echo -e "    ${G}${B}(default)${RST}            List skills with one-liner descriptions"
+    echo -e "    ${G}help${RST}, ${G}-h${RST}, ${G}--help${RST}     Show this help message"
+    echo -e "    ${G}list${RST}, ${G}l${RST}, ${G}--list${RST}     List skills with short descriptions"
+    echo -e "    ${G}long${RST}, ${G}--long${RST}        List skills with detailed descriptions"
     echo ""
     echo -e "  ${B}SUPPORTED FRAMEWORKS${RST}"
     echo -e "    ${D}Claude${RST} (.claude/skills)    ${D}Codex${RST} (.agents/skills)"
@@ -108,7 +111,7 @@ main() {
         oneliner)            run_mode "oneliner" ;;
         *)
             echo -e "${R}✗ Error:${RST} Unknown command '${cmd}'" >&2
-            echo -e "  Run ${G}skillhelp --help${RST} for usage." >&2
+            echo -e "  Run ${G}skh --help${RST} for usage." >&2
             exit 1
             ;;
     esac

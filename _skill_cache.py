@@ -274,14 +274,19 @@ def generate_descriptions(
     )
     short_prompt = (
         "You are a technical writer. Given the following skill/rule contents, "
-        "write a SHORT description (1-2 sentences, max 80 words) explaining what "
-        "it does and when to use it. Be concise. Output ONLY the text.\n\n"
+        "write a SHORT description (2-3 sentences, max 100 words) covering: "
+        "what it does, what input/parameters the user must provide to run it "
+        "(e.g. a conversation ID, a service name, a URL), and what output or "
+        "outcome to expect. Be concise. Output ONLY the text.\n\n"
         + content
     )
     medium_prompt = (
         "You are a technical writer. Given the following skill/rule contents, "
-        "write a MEDIUM description (3-5 sentences, max 200 words) explaining "
-        "what it does, key functionality, and when to use it. Output ONLY the text.\n\n"
+        "write a MEDIUM description (4-6 sentences, max 250 words) covering: "
+        "what it does, what input/parameters the user must provide (e.g. IDs, "
+        "names, URLs, config values), what output or outcome to expect, and any "
+        "prerequisites or setup the user should know before running it (e.g. "
+        "required tools, access, environment variables). Output ONLY the text.\n\n"
         + content
     )
     with ThreadPoolExecutor(max_workers=3) as pool:
