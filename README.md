@@ -13,6 +13,8 @@ Then add the alias to your shell:
 ```bash
 # bash
 echo 'alias skh="$HOME/.skillhelp/skillhelp.sh"' >> ~/.bashrc && source ~/.bashrc
+# or
+echo 'alias skh="$HOME/.skillhelp/skillhelp.sh"' >> ~/.bash_profile && source ~/.bash_profile
 
 # zsh
 echo 'alias skh="$HOME/.skillhelp/skillhelp.sh"' >> ~/.zshrc && source ~/.zshrc
