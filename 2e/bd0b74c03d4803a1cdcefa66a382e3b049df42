@@ -1,0 +1,20 @@
+README.md
+  s_8829617fb9753a::t_3bd3792f1c7758 15,20,23,54,61-64
+  h_4bbaa0210b2fa2 16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "2ebd0b74c03d4803a1cdcefa66a382e3b049df42",
+  "prompts": {},
+  "sessions": {
+    "s_8829617fb9753a": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "bdd0c2d7-560e-460e-bf2c-e8b33b30c0fd",
+        "model": "Claude Opus 4.6 Thinking"
+      },
+      "human_author": "gundeep-dialpad <gndp@live.com>"
+    }
+  }
+}
